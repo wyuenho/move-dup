@@ -1,31 +1,23 @@
 ;;; move-dup.el --- Eclipse-like moving and duplications of lines or regions
 ;;; with a single key binding.
 
-;; Copyright (c) 2014 Jimmy Yuen Ho Wong
+;; Copyright (C) 2014 Jimmy Yuen Ho Wong
 
-;; Permission is hereby granted, free of charge, to any person
-;; obtaining a copy of this software and associated documentation
-;; files (the "Software"), to deal in the Software without
-;; restriction, including without limitation the rights to use,
-;; copy, modify, merge, publish, distribute, sublicense, and/or sell
-;; copies of the Software, and to permit persons to whom the
-;; Software is furnished to do so, subject to the following
-;; conditions:
+;; This program is free software: you can redistribute it and/or modify it under
+;; the terms of the GNU General Public License as published by the Free Software
+;; Foundation, either version 3 of the License, or (at your option) any later
+;; version.
 
-;; The above copyright notice and this permission notice shall be
-;; included in all copies or substantial portions of the Software.
+;; This program is distributed in the hope that it will be useful, but WITHOUT
+;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+;; FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+;; details.
 
-;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-;; EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-;; OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-;; NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-;; HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-;; WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-;; OTHER DEALINGS IN THE SOFTWARE.
+;; You should have received a copy of the GNU General Public License along with
+;; this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;; Author: Jimmy Yuen Ho Wong <wyuenho@gmail.com>
-;; Version: 0.1
+;; Version: 0.1.1
 ;; Created 11 June 2014
 ;; Keywords: convenience wp
 
@@ -42,9 +34,6 @@
 ;; (global-set-key (kbd "M-<down>") 'md/move-lines-down)
 ;; (global-set-key (kbd "C-M-<up>") 'md/duplicate-up)
 ;; (global-set-key (kbd "C-M-<down>") 'md/duplicate-down)
-
-;; TODO:
-;; customizable bindings
 
 ;;; Code:
 
