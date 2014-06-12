@@ -70,10 +70,10 @@ beginning of the next line of the end of the region."
   "Interactive function to move the currect selection N lines.
 
 If the selection is not a rectangle, this function will expand
-the selection to a rectangle via the
-function `(ensure-rectangle)` and move it accordingly.  If the
-prefix N is positive, this function moves the rectangle forward N
-lines; otherwise backward."
+the selection to a rectangle via the function
+`md/ensure-rectangle' and move it accordingly.  If the prefix N
+is positive, this function moves the rectangle forward N lines;
+otherwise backward."
   (interactive "*p")
   (md/ensure-rectangle)
   (let* ((start (region-beginning))
@@ -172,9 +172,9 @@ DIRECTION must be one of \"up\" or \"down\"."
 DIRECTION must be one of \"up\" or \"down\".
 
 If the selection is not a rectangle, this function will expand
-the selection to a rectangle via the
-function `(ensure-rectangle)` and duplicate it accordingly.  If
-the DIRECTION is \"up\", this function duplicates the selected
+the selection to a rectangle via the function
+`md/ensure-rectangle' and duplicate it accordingly.  If the
+DIRECTION is \"up\", this function duplicates the selected
 rectangle and places it __below__ the selection; __above__ if
 DIRECTION is \"down\"."
   (md/ensure-rectangle)
