@@ -1,7 +1,7 @@
-move-dup.el
-===========
+move-dup
+========
 
-Eclipse-like moving and duplicating lines or rectangles.
+Minor mode for Eclipse-like moving and duplicating lines or rectangles.
 
 This package offers convenient editing commands much like Eclipse's ability to
 move and duplicate lines or selections.
