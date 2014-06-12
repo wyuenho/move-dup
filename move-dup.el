@@ -200,8 +200,8 @@ DIRECTION is \"down\"."
 
 ;;;###autoload
 (define-minor-mode move-dup-mode
-  "Eclipse-like moving and duplicating lines or rectangles with
-default key bindings.
+  "Minor mode for Eclipse-like moving and duplicating lines or
+rectangles with default key bindings.
 
 The default key bindings are:
 
