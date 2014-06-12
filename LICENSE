@@ -1,5 +1,4 @@
-move-dup.el --- Eclipse-like moving and duplications of lines or regions with a
-single key binding.
+move-dup.el
 
 Copyright (C) 2014 Jimmy Yuen Ho Wong
 
