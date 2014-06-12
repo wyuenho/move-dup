@@ -1,5 +1,4 @@
-;;; move-dup.el --- Eclipse-like moving and duplications of lines or regions
-;;; with a single key binding.
+;;; move-dup.el --- Eclipse-like moving and duplicating lines or rectangles.
 
 ;; Copyright (C) 2014 Jimmy Yuen Ho Wong
 
@@ -17,7 +16,7 @@
 ;; this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;; Author: Jimmy Yuen Ho Wong <wyuenho@gmail.com>
-;; Version: 0.1.1
+;; Version: 0.1.2
 ;; Created 11 June 2014
 ;; Keywords: convenience wp
 
@@ -26,17 +25,30 @@
 ;;; Commentary:
 
 ;; This package offers convenient editing commands much like Eclipse's ability
-;; to move and duplicate lines or selections. The following is the installation
-;; instruction and recommended key-bindings.
+;; to move and duplicate lines or rectangular selections.
+
+;; If you aren't using `package.el' or plan to customize the default
+;; key-bindings, you need to put `move-dup.el' into your Emacs' load-path and
+;; `require' it in your Emacs init file; otherwise you can skip this part.
 
 ;; (require 'move-dup)
+
+;; If you don't want to toggle the minor mode, you can bind these functions like
+;; so. All of these functions work on a single line or a rectangle.
+
 ;; (global-set-key (kbd "M-<up>") 'md/move-lines-up)
 ;; (global-set-key (kbd "M-<down>") 'md/move-lines-down)
 ;; (global-set-key (kbd "C-M-<up>") 'md/duplicate-up)
 ;; (global-set-key (kbd "C-M-<down>") 'md/duplicate-down)
 
-;;; Code:
+;; If you used `package.el' to install `move-dup.el', this is equivalent to all
+;; of the above.
+;; (global-move-dup-minor-mode)
 
+;; You can also turn on `move-dup-minor-mode' individually for each buffer.
+;; (move-dup-minor-mode)
+
+;;; Code:
 (defun md/ensure-rectangle ()
   (if (< (point) (mark))
       (exchange-point-and-mark))
@@ -129,17 +141,27 @@
           ((string= direction "up")
            (backward-char text-length)))))
 
+(defgroup move-dup nil
+  "Eclipse-like moving and duplicating lines or rectangles."
+  :group 'convenience
+  :version "24.3"
+  :package-version "0.1.2")
+
+;;;###autoload
+(define-minor-mode move-dup-mode
+  "Eclipse-like moving and duplicating lines or rectangles with default key-bindings."
+  :lighter " md"
+  :keymap '(([M-up] . md/move-lines-up)
+            ([M-down] . md/move-lines-down)
+            ([C-M-up] . md/duplicate-up)
+            ([C-M-down] . md/duplicate-down)))
+
+(defun move-dup-on ()
+  (unless (minibufferp)
+    (move-dup-mode 1)))
+
+;;;###autoload
+(define-globalized-minor-mode global-move-dup-mode move-dup-mode move-dup-on)
+
 (provide 'move-dup)
-
-;;;###autoload
-(require 'move-dup)
-;;;###autoload
-(global-set-key (kbd "M-<up>") 'md/move-lines-up)
-;;;###autoload
-(global-set-key (kbd "M-<down>") 'md/move-lines-down)
-;;;###autoload
-(global-set-key (kbd "C-M-<up>") 'md/duplicate-up)
-;;;###autoload
-(global-set-key (kbd "C-M-<down>") 'md/duplicate-down)
-
 ;;; move-dup.el ends here
