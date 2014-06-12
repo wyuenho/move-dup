@@ -33,11 +33,11 @@ If you used `package.el` to install `move-dup`, this is equivalent to all of the
 above.
 
 ```elisp
-(global-move-dup-minor-mode)
+(global-move-dup-mode)
 ```
 
-You can also turn on `move-dup-minor-mode` individually for each buffer.
+You can also turn on `move-dup-mode` individually for each buffer.
 
 ```elisp
-(move-dup-minor-mode)
+(move-dup-mode)
 ```
