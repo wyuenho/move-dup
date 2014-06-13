@@ -16,7 +16,7 @@
 ;; this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;; Author: Jimmy Yuen Ho Wong <wyuenho@gmail.com>
-;; Version: 0.1.3
+;; Version: 0.2.0
 ;; Created: 11 June 2014
 ;; Keywords: convenience wp
 
@@ -77,8 +77,7 @@ otherwise backward."
   (interactive "*p")
   (md/ensure-rectangle)
   (let* ((start (region-beginning))
-         (end (region-end))
-         (lines (count-lines start end)))
+         (end (region-end)))
     (if (< n 0)
         (exchange-point-and-mark))
     (pop-mark)
@@ -87,8 +86,9 @@ otherwise backward."
     (let* ((swap-start (region-beginning))
            (swap-end (region-end)))
       (let (deactivate-mark)
-        (transpose-regions start end swap-start swap-end)
-        (pop-mark))
+        (let ((text (delete-and-extract-region start end)))
+          (insert text)
+          (pop-mark)))
       (push-mark)
       (backward-char (- end start))
       (exchange-point-and-mark))))
