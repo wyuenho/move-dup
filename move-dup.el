@@ -16,7 +16,7 @@
 ;; this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;; Author: Jimmy Yuen Ho Wong <wyuenho@gmail.com>
-;; Version: 0.2.0
+;; Version: 0.2.1
 ;; Created: 11 June 2014
 ;; Keywords: convenience wp
 
