@@ -195,9 +195,7 @@ DIRECTION is \"down\"."
 (defgroup move-dup nil
   "Eclipse-like moving and duplicating lines or rectangles."
   :group 'convenience
-  :group 'wp
-  :version "24.3"
-  :package-version "0.1.2")
+  :group 'wp)
 
 ;;;###autoload
 (define-minor-mode move-dup-mode
