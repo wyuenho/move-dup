@@ -66,8 +66,9 @@ beginning of the next line of the end of the region."
   (beginning-of-line)
   (exchange-point-and-mark))
 
+;;;###autoload
 (defun md/move-region (&optional n)
-  "Interactive function to move the currect selection N lines.
+  "Interactive function to move the current selection N lines.
 
 If the selection is not a rectangle, this function will expand
 the selection to a rectangle via the function
@@ -93,6 +94,7 @@ otherwise backward."
       (backward-char (- end start))
       (exchange-point-and-mark))))
 
+;;;###autoload
 (defun md/move-line (&optional n)
   "Interactive function to move the current line N line.
 
@@ -111,6 +113,7 @@ forward N lines; otherwise backward."
       (md/move-region n)
     (md/move-line n)))
 
+;;;###autoload
 (defun md/move-lines-up (&optional n)
   "Interactive function to move the current line or selection up.
 
@@ -119,6 +122,7 @@ or selection up N lines; otherwise down."
   (interactive "*p")
   (md/move-line-or-region (if (or (null n) (= n 0)) -1 (- n))))
 
+;;;###autoload
 (defun md/move-lines-down (&optional n)
   "Interactive function to move the current line or selection down.
 
@@ -127,6 +131,7 @@ or selection down N lines; otherwise up."
   (interactive "*p")
   (md/move-line-or-region (if (or (null n) (= n 0)) 1 n)))
 
+;;;###autoload
 (defun md/duplicate-up (&optional n)
   "Interactive function to duplicate the current line or selection upward.
 
@@ -136,6 +141,7 @@ line or selection."
   (interactive "*p")
   (dotimes (i n) (md/duplicate-line-or-region "up")))
 
+;;;###autoload
 (defun md/duplicate-down (&optional n)
   "Interactive function to duplicate the current line or selection downward.
 
