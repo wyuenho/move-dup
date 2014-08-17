@@ -100,9 +100,11 @@ If the prefix N is positive, this function moves the current line
 forward N lines; otherwise backward."
   (interactive "*p")
   (let ((col (current-column)))
-    (forward-line 1)
-    (transpose-lines n)
-    (forward-line -1)
+    (goto-char (save-excursion
+                 (push-mark)
+                 (end-of-line)
+                 (md/move-region n)
+                 (region-beginning)))
     (move-to-column col)))
 
 (defun md/move-line-or-region (n)
