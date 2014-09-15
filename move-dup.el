@@ -165,7 +165,9 @@ DIRECTION must be one of \"up\" or \"down\"."
 DIRECTION must be one of \"up\" or \"down\"."
   (let ((text (buffer-substring (line-beginning-position) (line-end-position)))
         (col (current-column)))
-    (forward-line)
+    (unless (and (zerop (forward-line))
+                 (= (preceding-char) ?\n))
+      (newline))
     (insert text)
     (open-line 1)
     (if (string= direction "up")
