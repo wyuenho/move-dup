@@ -102,7 +102,7 @@ If the prefix N is positive, this function moves the current line
 forward N lines; otherwise backward."
   (interactive "*p")
   (let ((col (current-column)))
-    (goto-char (save-excursion
+    (goto-char (save-mark-and-excursion
                  (push-mark)
                  (end-of-line)
                  (md/move-region n)
