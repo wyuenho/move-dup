@@ -59,14 +59,18 @@ After normalization, the point always comes after mark.  The
 region will always be expanded such that it will always begin
 from the beginning of the line the mark is on, and ends at the
 beginning of the next line of the end of the region."
-  (if (< (point) (mark))
-      (exchange-point-and-mark))
-  (when (not (char-equal (char-before (region-end)) 10))
-    (end-of-line)
-    (forward-char))
-  (exchange-point-and-mark)
-  (beginning-of-line)
-  (exchange-point-and-mark))
+  (let (deactivate-mark)
+    (if (< (point) (mark))
+        (exchange-point-and-mark))
+    (when (not (char-equal (char-before (region-end)) 10))
+      (if (and (eobp) (not (char-equal (following-char) 10)))
+          (newline)
+        (progn
+          (end-of-line)
+          (forward-char))))
+    (exchange-point-and-mark)
+    (beginning-of-line)
+    (exchange-point-and-mark)))
 
 ;;;###autoload
 (defun md/move-region (&optional n)
