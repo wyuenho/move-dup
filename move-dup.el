@@ -39,10 +39,10 @@
 ;; If you don't want to toggle the minor mode, you can bind these functions like
 ;; so.  All of these functions work on a single line or a rectangle.
 
-;; (global-set-key (kbd "M-<up>") 'md/move-lines-up)
-;; (global-set-key (kbd "M-<down>") 'md/move-lines-down)
-;; (global-set-key (kbd "C-M-<up>") 'md/duplicate-up)
-;; (global-set-key (kbd "C-M-<down>") 'md/duplicate-down)
+;; (global-set-key (kbd "M-<up>") 'md-move-lines-up)
+;; (global-set-key (kbd "M-<down>") 'md-move-lines-down)
+;; (global-set-key (kbd "C-M-<up>") 'md-duplicate-up)
+;; (global-set-key (kbd "C-M-<down>") 'md-duplicate-down)
 
 ;; If you used `package.el' to install `move-dup.el', this is equivalent to all
 ;; of the above.
@@ -52,7 +52,7 @@
 ;; (move-dup-mode)
 
 ;;; Code:
-(defun md/ensure-rectangle ()
+(defun md-ensure-rectangle ()
   "Normalizes the selection by making sure it's always a rectangle.
 
 After normalization, the point always comes after mark.  The
@@ -73,16 +73,16 @@ beginning of the next line of the end of the region."
     (exchange-point-and-mark)))
 
 ;;;###autoload
-(defun md/move-region (&optional n)
+(defun md-move-region (&optional n)
   "Interactive function to move the current selection N lines.
 
 If the selection is not a rectangle, this function will expand
 the selection to a rectangle via the function
-`md/ensure-rectangle' and move it accordingly.  If the prefix N
+`md-ensure-rectangle' and move it accordingly.  If the prefix N
 is positive, this function moves the rectangle forward N lines;
 otherwise backward."
   (interactive "*p")
-  (md/ensure-rectangle)
+  (md-ensure-rectangle)
   (let* ((start (region-beginning))
          (end (region-end)))
     (if (< n 0)
@@ -101,7 +101,7 @@ otherwise backward."
       (exchange-point-and-mark))))
 
 ;;;###autoload
-(defun md/move-line (&optional n)
+(defun md-move-line (&optional n)
   "Interactive function to move the current line N line.
 
 If the prefix N is positive, this function moves the current line
@@ -111,63 +111,63 @@ forward N lines; otherwise backward."
     (goto-char (save-mark-and-excursion
                  (push-mark)
                  (end-of-line)
-                 (md/move-region n)
+                 (md-move-region n)
                  (region-beginning)))
     (move-to-column col)))
 
-(defun md/move-line-or-region (n)
+(defun md-move-line-or-region (n)
   "Decides whether a line or selection should be moved N lines."
   (if (use-region-p)
-      (md/move-region n)
-    (md/move-line n)))
+      (md-move-region n)
+    (md-move-line n)))
 
 ;;;###autoload
-(defun md/move-lines-up (&optional n)
+(defun md-move-lines-up (&optional n)
   "Interactive function to move the current line or selection up.
 
 If the prefix N is positive, this function moves the current line
 or selection up N lines; otherwise down."
   (interactive "*p")
-  (md/move-line-or-region (if (or (null n) (= n 0)) -1 (- n))))
+  (md-move-line-or-region (if (or (null n) (= n 0)) -1 (- n))))
 
 ;;;###autoload
-(defun md/move-lines-down (&optional n)
+(defun md-move-lines-down (&optional n)
   "Interactive function to move the current line or selection down.
 
 If the prefix N is positive, this function moves the current line
 or selection down N lines; otherwise up."
   (interactive "*p")
-  (md/move-line-or-region (if (or (null n) (= n 0)) 1 n)))
+  (md-move-line-or-region (if (or (null n) (= n 0)) 1 n)))
 
 ;;;###autoload
-(defun md/duplicate-up (&optional n)
+(defun md-duplicate-up (&optional n)
   "Interactive function to duplicate the current line or selection upward.
 
 If the prefix N is positive, this function makes N duplicates of
 the current line or selection and place them above the current
 line or selection."
   (interactive "*p")
-  (dotimes (i n) (md/duplicate-line-or-region "up")))
+  (dotimes (i n) (md-duplicate-line-or-region "up")))
 
 ;;;###autoload
-(defun md/duplicate-down (&optional n)
+(defun md-duplicate-down (&optional n)
   "Interactive function to duplicate the current line or selection downward.
 
 If the prefix N is positive, this function makes N duplicates of
 the current line or selection and place them below the current
 line or selection."
   (interactive "*p")
-  (dotimes (i n) (md/duplicate-line-or-region "down")))
+  (dotimes (i n) (md-duplicate-line-or-region "down")))
 
-(defun md/duplicate-line-or-region (direction)
+(defun md-duplicate-line-or-region (direction)
   "Decides whether a line or selection should be duplicated.
 
 DIRECTION must be one of \"up\" or \"down\"."
   (if (use-region-p)
-      (md/duplicate-region direction)
-    (md/duplicate-line direction)))
+      (md-duplicate-region direction)
+    (md-duplicate-line direction)))
 
-(defun md/duplicate-line (direction)
+(defun md-duplicate-line (direction)
   "Function to duplicate the current line.
 
 DIRECTION must be one of \"up\" or \"down\"."
@@ -182,18 +182,18 @@ DIRECTION must be one of \"up\" or \"down\"."
         (forward-line -1))
     (move-to-column col)))
 
-(defun md/duplicate-region (direction)
+(defun md-duplicate-region (direction)
   "Function to duplicate the current selection.
 
 DIRECTION must be one of \"up\" or \"down\".
 
 If the selection is not a rectangle, this function will expand
 the selection to a rectangle via the function
-`md/ensure-rectangle' and duplicate it accordingly.  If the
+`md-ensure-rectangle' and duplicate it accordingly.  If the
 DIRECTION is \"up\", this function duplicates the selected
 rectangle and places it __below__ the selection; __above__ if
 DIRECTION is \"down\"."
-  (md/ensure-rectangle)
+  (md-ensure-rectangle)
   (let* ((start (region-beginning))
          (end (region-end))
          (text (buffer-substring start end))
@@ -220,15 +220,15 @@ rectangles with default key bindings.
 
 The default key bindings are:
 
-\([M-up] . md/move-lines-up)
-\([M-down] . md/move-lines-down)
-\([C-M-up] . md/duplicate-up)
-\([C-M-down] . md/duplicate-down)"
+\([M-up] . md-move-lines-up)
+\([M-down] . md-move-lines-down)
+\([C-M-up] . md-duplicate-up)
+\([C-M-down] . md-duplicate-down)"
   :lighter " md"
-  :keymap '(([M-up] . md/move-lines-up)
-            ([M-down] . md/move-lines-down)
-            ([C-M-up] . md/duplicate-up)
-            ([C-M-down] . md/duplicate-down)))
+  :keymap '(([M-up] . md-move-lines-up)
+            ([M-down] . md-move-lines-down)
+            ([C-M-up] . md-duplicate-up)
+            ([C-M-down] . md-duplicate-down)))
 
 (defun move-dup-on ()
   "Decides whether the function `move-dup-mode' should be called with t."
@@ -237,6 +237,18 @@ The default key bindings are:
 
 ;;;###autoload
 (define-globalized-minor-mode global-move-dup-mode move-dup-mode move-dup-on)
+
+(define-obsolete-function-alias 'md/ensure-rectangle 'md-ensure-rectangle "1.1.0")
+(define-obsolete-function-alias 'md/move-region 'md-move-region "1.1.0")
+(define-obsolete-function-alias 'md/move-line 'md-move-line "1.1.0")
+(define-obsolete-function-alias 'md/move-line-or-region 'md-move-line-or-region "1.1.0")
+(define-obsolete-function-alias 'md/move-lines-up 'md-move-lines-up "1.1.0")
+(define-obsolete-function-alias 'md/move-lines-down 'md-move-lines-down "1.1.0")
+(define-obsolete-function-alias 'md/duplicate-up 'md-duplicate-up "1.1.0")
+(define-obsolete-function-alias 'md/duplicate-down 'md-duplicate-down "1.1.0")
+(define-obsolete-function-alias 'md/duplicate-line-or-region 'md-duplicate-line-or-region "1.1.0")
+(define-obsolete-function-alias 'md/duplicate-line 'md-duplicate-line "1.1.0")
+(define-obsolete-function-alias 'md/duplicate-region 'md-duplicate-region "1.1.0")
 
 (provide 'move-dup)
 ;;; move-dup.el ends here

@@ -23,10 +23,10 @@ If you don't want to toggle the minor mode, you can bind these functions like
 so. All of these functions work on a single line or a rectangle.
 
 ```elisp
-(global-set-key (kbd "M-<up>") 'md/move-lines-up)
-(global-set-key (kbd "M-<down>") 'md/move-lines-down)
-(global-set-key (kbd "C-M-<up>") 'md/duplicate-up)
-(global-set-key (kbd "C-M-<down>") 'md/duplicate-down)
+(global-set-key (kbd "M-<up>") 'md-move-lines-up)
+(global-set-key (kbd "M-<down>") 'md-move-lines-down)
+(global-set-key (kbd "C-M-<up>") 'md-duplicate-up)
+(global-set-key (kbd "C-M-<down>") 'md-duplicate-down)
 ```
 
 If you used `package.el` to install `move-dup`, this is equivalent to all of the
