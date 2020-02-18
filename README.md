@@ -36,6 +36,23 @@ above.
 (global-move-dup-mode)
 ```
 
+If you are using `package.el` you can rebind default key-bindings the following
+way.
+
+```elisp
+(use-package move-dup
+  :bind (
+         ("M-p" . md-move-lines-up)
+         ("C-M-p" . md-duplicate-up)
+         ("M-n" . md-move-lines-down)
+         ("C-M-n" . md-duplicate-down)
+         )
+  )
+```
+
+Beware that this way you have to map _all_ the key-bindings you need, not just
+the ones you'd like to remap.
+
 You can also turn on `move-dup-mode` individually for each buffer.
 
 ```elisp
