@@ -102,7 +102,7 @@ otherwise backward."
 
 ;;;###autoload
 (defun md-move-line (&optional n)
-  "Interactive function to move the current line N line.
+  "Interactive function to move the current line by N lines.
 
 If the prefix N is positive, this function moves the current line
 forward N lines; otherwise backward."
