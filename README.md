@@ -1,6 +1,9 @@
 move-dup
 ========
 
+[![MELPA Stable](https://stable.melpa.org/packages/move-dup-badge.svg)](https://stable.melpa.org/#/move-dup)
+[![MELPA](https://melpa.org/packages/move-dup-badge.svg)](https://melpa.org/#/move-dup)
+
 Minor mode for Eclipse-like moving and duplicating lines or rectangles.
 
 This package offers convenient editing commands much like Eclipse's ability to
