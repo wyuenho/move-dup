@@ -238,17 +238,5 @@ The default key bindings are:
 ;;;###autoload
 (define-globalized-minor-mode global-move-dup-mode move-dup-mode move-dup-on)
 
-(define-obsolete-function-alias 'md/ensure-rectangle 'md-ensure-rectangle "1.1.0")
-(define-obsolete-function-alias 'md/move-region 'md-move-region "1.1.0")
-(define-obsolete-function-alias 'md/move-line 'md-move-line "1.1.0")
-(define-obsolete-function-alias 'md/move-line-or-region 'md-move-line-or-region "1.1.0")
-(define-obsolete-function-alias 'md/move-lines-up 'md-move-lines-up "1.1.0")
-(define-obsolete-function-alias 'md/move-lines-down 'md-move-lines-down "1.1.0")
-(define-obsolete-function-alias 'md/duplicate-up 'md-duplicate-up "1.1.0")
-(define-obsolete-function-alias 'md/duplicate-down 'md-duplicate-down "1.1.0")
-(define-obsolete-function-alias 'md/duplicate-line-or-region 'md-duplicate-line-or-region "1.1.0")
-(define-obsolete-function-alias 'md/duplicate-line 'md-duplicate-line "1.1.0")
-(define-obsolete-function-alias 'md/duplicate-region 'md-duplicate-region "1.1.0")
-
 (provide 'move-dup)
 ;;; move-dup.el ends here
