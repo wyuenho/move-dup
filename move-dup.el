@@ -110,7 +110,7 @@ forward N lines; otherwise backward."
   (let ((col (current-column)))
     (goto-char (save-mark-and-excursion
                  (push-mark)
-                 (end-of-line)
+                 (forward-line)
                  (md-move-region n)
                  (region-beginning)))
     (move-to-column col)))
