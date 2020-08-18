@@ -44,13 +44,10 @@ way.
 
 ```elisp
 (use-package move-dup
-  :bind (
-         ("M-p" . md-move-lines-up)
+  :bind (("M-p"   . md-move-lines-up)
          ("C-M-p" . md-duplicate-up)
-         ("M-n" . md-move-lines-down)
-         ("C-M-n" . md-duplicate-down)
-         )
-  )
+         ("M-n"   . md-move-lines-down)
+         ("C-M-n" . md-duplicate-down)))
 ```
 
 Beware that this way you have to map _all_ the key-bindings you need, not just
