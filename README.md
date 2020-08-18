@@ -9,6 +9,10 @@ Minor mode for Eclipse-like moving and duplicating lines or rectangles.
 This package offers convenient editing commands much like Eclipse's ability to
 move and duplicate lines or selections.
 
+## Demo
+
+[![Demo](./demo.gif)](./demo.gif)
+
 ## Commentary
 
 This package offers convenient editing commands much like Eclipse's ability to
