@@ -52,6 +52,21 @@
 ;; (move-dup-mode)
 
 ;;; Code:
+
+(defgroup move-dup nil
+  "Move or duplicate text."
+  :group 'editing
+  :prefix "move-dup")
+
+(defcustom move-dup-undo-auto-amalgamate t
+  "Whether a series of move-dup command should only require one undo to undo all."
+  :type 'boolean
+  :group 'move-dup)
+
+(defun md-merge-undo-boundaries-maybe ()
+  (when move-dup-undo-auto-amalgamate
+    (undo-auto-amalgamate)))
+
 (defun md-ensure-rectangle ()
   "Normalizes the selection by making sure it's always a rectangle.
 
@@ -117,6 +132,7 @@ forward N lines; otherwise backward."
 
 (defun md-move-line-or-region (n)
   "Decides whether a line or selection should be moved N lines."
+  (md-merge-undo-boundaries-maybe)
   (if (use-region-p)
       (md-move-region n)
     (md-move-line n)))
@@ -163,6 +179,7 @@ line or selection."
   "Decides whether a line or selection should be duplicated.
 
 DIRECTION must be one of \"up\" or \"down\"."
+  (md-merge-undo-boundaries-maybe)
   (if (use-region-p)
       (md-duplicate-region direction)
     (md-duplicate-line direction)))
