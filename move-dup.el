@@ -16,7 +16,7 @@
 ;; this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;; Author: Jimmy Yuen Ho Wong <wyuenho@gmail.com>
-;; Version: 1.1.0
+;; Version: 1.1.2
 ;; Created: 11 June 2014
 ;; Url: https://github.com/wyuenho/move-dup
 ;; Compatibility: GNU Emacs 25.1
