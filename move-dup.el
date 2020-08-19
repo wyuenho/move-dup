@@ -237,6 +237,7 @@ The default key bindings are:
 \([C-M-up] . md-duplicate-up)
 \([C-M-down] . md-duplicate-down)"
   :lighter " md"
+  :group 'move-dup
   :keymap '(([M-up] . md-move-lines-up)
             ([M-down] . md-move-lines-down)
             ([C-M-up] . md-duplicate-up)
@@ -248,7 +249,8 @@ The default key bindings are:
     (move-dup-mode 1)))
 
 ;;;###autoload
-(define-globalized-minor-mode global-move-dup-mode move-dup-mode move-dup-on)
+(define-globalized-minor-mode global-move-dup-mode move-dup-mode move-dup-on
+  :group 'move-dup)
 
 (provide 'move-dup)
 ;;; move-dup.el ends here
