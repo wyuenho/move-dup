@@ -225,11 +225,6 @@ DIRECTION is \"down\"."
           ((string= direction "up")
            (backward-char text-length)))))
 
-(defgroup move-dup nil
-  "Eclipse-like moving and duplicating lines or rectangles."
-  :group 'convenience
-  :group 'wp)
-
 ;;;###autoload
 (define-minor-mode move-dup-mode
   "Minor mode for Eclipse-like moving and duplicating lines or
