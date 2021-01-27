@@ -30,10 +30,10 @@ If you don't want to toggle the minor mode, you can bind these functions like
 so. All of these functions work on a single line or a rectangle.
 
 ```elisp
-(global-set-key (kbd "M-<up>") 'md-move-lines-up)
-(global-set-key (kbd "M-<down>") 'md-move-lines-down)
-(global-set-key (kbd "C-M-<up>") 'md-duplicate-up)
-(global-set-key (kbd "C-M-<down>") 'md-duplicate-down)
+(global-set-key (kbd "M-<up>") 'move-dup-move-lines-up)
+(global-set-key (kbd "M-<down>") 'move-dup-move-lines-down)
+(global-set-key (kbd "C-M-<up>") 'move-dup-duplicate-up)
+(global-set-key (kbd "C-M-<down>") 'move-dup-duplicate-down)
 ```
 
 If you used `package.el` to install `move-dup`, this is equivalent to all of the
@@ -48,10 +48,10 @@ way.
 
 ```elisp
 (use-package move-dup
-  :bind (("M-p"   . md-move-lines-up)
-         ("C-M-p" . md-duplicate-up)
-         ("M-n"   . md-move-lines-down)
-         ("C-M-n" . md-duplicate-down)))
+  :bind (("M-p"   . move-dup-move-lines-up)
+         ("C-M-p" . move-dup-duplicate-up)
+         ("M-n"   . move-dup-move-lines-down)
+         ("C-M-n" . move-dup-duplicate-down)))
 ```
 
 Beware that this way you have to map _all_ the key-bindings you need, not just
