@@ -13,6 +13,8 @@ move and duplicate lines or selections.
 
 [![Demo](./demo.gif)](./demo.gif)
 
+Courtesy of bg.jheng
+
 ## Commentary
 
 This package offers convenient editing commands much like Eclipse's ability to
